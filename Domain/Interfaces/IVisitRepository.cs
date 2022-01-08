@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Interfaces
 {
-    interface IVisitRepository
+    public interface IVisitRepository
     {
         IQueryable<Visit> GetAll();
         Visit GetById(int id);

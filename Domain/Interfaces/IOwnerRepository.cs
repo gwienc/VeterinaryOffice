@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace Domain.Interfaces
 {
-    interface IOwnerRepository
+    public interface IOwnerRepository
     {
         IQueryable<Owner> GetAll();
-        Owner GetById(int it);
+        Owner GetById(int id);
         Owner Add(Owner owner);
         void Update(Owner owner);
         void Delete(Owner owner);
