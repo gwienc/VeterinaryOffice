@@ -15,5 +15,11 @@ namespace Domain.Entities
         public int Age { get; set; }
         public double Weight { get; set; }
         public string Gender { get; set; }
+        public int OwnerId { get; set; }
+
+        //virtual properties
+        public virtual ICollection<Visit> Visits { get; set; }
+        public virtual ICollection<Animal_Medicine> Animals_Medicines { get; set; }
+        public virtual Owner Owner { get; set; }
     }
 }

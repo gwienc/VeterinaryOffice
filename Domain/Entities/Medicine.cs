@@ -10,5 +10,8 @@ namespace Domain.Entities
     {
         public int Id { get; set; }
         public string Name { get; set; }
+
+        //virtual properties
+        public virtual ICollection<Animal_Medicine> Animals_Medicines { get; set; }
     }
 }

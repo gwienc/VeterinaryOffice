@@ -8,11 +8,14 @@ namespace Domain.Entities
 {
     public class Owner
     {
-        public int id { get; set; }
+        public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Street { get; set; }
         public string PostCode { get; set; }
         public string City { get; set; }
+
+        //virtual properties
+        public virtual ICollection<Animal> Animals { get; set; }
     }
 }
