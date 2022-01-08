@@ -1,4 +1,6 @@
 C:\Users\USER\Desktop\Visual\REST API\VeterinaryOffice\VeterinaryOffice\Infrastructure\bin\Debug\net5.0\Infrastructure.deps.json
+C:\Users\USER\Desktop\Visual\REST API\VeterinaryOffice\VeterinaryOffice\Infrastructure\bin\Debug\net5.0\Infrastructure.runtimeconfig.json
+C:\Users\USER\Desktop\Visual\REST API\VeterinaryOffice\VeterinaryOffice\Infrastructure\bin\Debug\net5.0\Infrastructure.runtimeconfig.dev.json
 C:\Users\USER\Desktop\Visual\REST API\VeterinaryOffice\VeterinaryOffice\Infrastructure\bin\Debug\net5.0\Infrastructure.dll
 C:\Users\USER\Desktop\Visual\REST API\VeterinaryOffice\VeterinaryOffice\Infrastructure\bin\Debug\net5.0\ref\Infrastructure.dll
 C:\Users\USER\Desktop\Visual\REST API\VeterinaryOffice\VeterinaryOffice\Infrastructure\bin\Debug\net5.0\Infrastructure.pdb
@@ -15,3 +17,4 @@ C:\Users\USER\Desktop\Visual\REST API\VeterinaryOffice\VeterinaryOffice\Infrastr
 C:\Users\USER\Desktop\Visual\REST API\VeterinaryOffice\VeterinaryOffice\Infrastructure\obj\Debug\net5.0\Infrastructure.dll
 C:\Users\USER\Desktop\Visual\REST API\VeterinaryOffice\VeterinaryOffice\Infrastructure\obj\Debug\net5.0\ref\Infrastructure.dll
 C:\Users\USER\Desktop\Visual\REST API\VeterinaryOffice\VeterinaryOffice\Infrastructure\obj\Debug\net5.0\Infrastructure.pdb
+C:\Users\USER\Desktop\Visual\REST API\VeterinaryOffice\VeterinaryOffice\Infrastructure\obj\Debug\net5.0\Infrastructure.genruntimeconfig.cache
