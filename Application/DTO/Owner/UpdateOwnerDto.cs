@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Application.DTO.Owner
 {
-    class UpdateOwnerDto
+    public class UpdateOwnerDto
     {
         public int Id { get; set; }
         public string FirstName { get; set; }
