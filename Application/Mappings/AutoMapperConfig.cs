@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace Application.Mappings
 {
-    class AutoMapperConfig
+    public class AutoMapperConfig
     {
         public static IMapper Initialize() => new MapperConfiguration(cfg =>
         {

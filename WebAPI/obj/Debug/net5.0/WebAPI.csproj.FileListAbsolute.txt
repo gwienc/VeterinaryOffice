@@ -64,3 +64,4 @@ C:\Users\USER\Desktop\Visual\REST API\VeterinaryOffice\VeterinaryOffice\WebAPI\o
 C:\Users\USER\Desktop\Visual\REST API\VeterinaryOffice\VeterinaryOffice\WebAPI\obj\Debug\net5.0\ref\WebAPI.dll
 C:\Users\USER\Desktop\Visual\REST API\VeterinaryOffice\VeterinaryOffice\WebAPI\obj\Debug\net5.0\WebAPI.pdb
 C:\Users\USER\Desktop\Visual\REST API\VeterinaryOffice\VeterinaryOffice\WebAPI\obj\Debug\net5.0\WebAPI.genruntimeconfig.cache
+C:\Users\USER\Desktop\Visual\REST API\VeterinaryOffice\VeterinaryOffice\WebAPI\bin\Debug\net5.0\AutoMapper.dll
