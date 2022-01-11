@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "WstrZwsqw6PG67Ra7TEAbVHfJQ5wx/6U8xXS+4Sir94s2NelzAyXxtIUhpZZ43CJ5KxtdCH6utWtQOo7O2a+xg==",
+  "dgSpecHash": "6y/XHfePauqTsnuNUdlTUPppAvTU1NDFFYXje3ZeKPRLJ9JsfyBphEa6/Wpkfx2NBvJgTNbqwEg1YWGIla2bWA==",
   "success": true,
   "projectFilePath": "C:\\Users\\USER\\Desktop\\Visual\\REST API\\VeterinaryOffice\\VeterinaryOffice\\Infrastructure\\Infrastructure.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\USER\\.nuget\\packages\\automapper\\11.0.0\\automapper.11.0.0.nupkg.sha512",
     "C:\\Users\\USER\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\USER\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\USER\\.nuget\\packages\\microsoft.data.sqlclient\\2.0.1\\microsoft.data.sqlclient.2.0.1.nupkg.sha512",
