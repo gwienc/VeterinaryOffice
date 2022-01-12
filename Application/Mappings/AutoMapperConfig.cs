@@ -20,7 +20,7 @@ namespace Application.Mappings
             #region Animal
 
             cfg.CreateMap<Animal, AnimalDto>()
-            .ForMember(m => m.Medicines, map => map.MapFrom(animal => animal.Animals_Medicines));
+            .ForMember(m => m.Medicines, map => map.MapFrom(animal => animal.Animals_Medicines.SelectMany(n => new List<string> { n.Medicine.Name })));
             cfg.CreateMap<CreateAnimalDto, Animal>();
             cfg.CreateMap<UpdateAnimalDto, Animal>();
 
@@ -33,7 +33,7 @@ namespace Application.Mappings
             cfg.CreateMap<UpdateMedicineDto, Medicine>();
 
             cfg.CreateMap<Medicine, MedicineWithAnimalsDto>()
-            .ForMember(m => m.Animals, map => map.MapFrom(medicine => medicine.Animals_Medicines));
+            .ForMember(m => m.Animals, map => map.MapFrom(medicine => medicine.Animals_Medicines.SelectMany(n => new List<int> { n.AnimalId })));
 
             #endregion
 

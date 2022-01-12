@@ -1,5 +1,7 @@
 using Application.Mappings;
+using Domain.Interfaces;
 using Infrastructure.Data;
+using Infrastructure.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -29,6 +31,11 @@ namespace WebAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<IAnimalRepository, AnimalRepository>();
+            services.AddScoped<IMedicineRepository, MedicineRepository>();
+            services.AddScoped<IOwnerRepository, OwnerRepository>();
+            services.AddScoped<IVetRepository, VetRepository>();
+            services.AddScoped<IVisitRepository, VisitRepository>();
             services.AddSingleton(AutoMapperConfig.Initialize());
             services.AddDbContext<VeterinaryOfficeContext>(options => options.UseSqlServer(Configuration.GetConnectionString("VeterinaryOfficeConnectionString")));
             services.AddControllers();
