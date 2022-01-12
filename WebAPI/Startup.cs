@@ -1,4 +1,6 @@
+using Application.IServices;
 using Application.Mappings;
+using Application.Services;
 using Domain.Interfaces;
 using Infrastructure.Data;
 using Infrastructure.Repositories;
@@ -31,6 +33,7 @@ namespace WebAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<IVetService, VetService>();
             services.AddScoped<IAnimalRepository, AnimalRepository>();
             services.AddScoped<IMedicineRepository, MedicineRepository>();
             services.AddScoped<IOwnerRepository, OwnerRepository>();
@@ -41,6 +44,7 @@ namespace WebAPI
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
+                c.EnableAnnotations();
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebAPI", Version = "v1" });
             });
         }
