@@ -14,13 +14,11 @@ namespace Application.Services
     public class MedicineService : IMedicineService
     {
         private readonly IMedicineRepository _medicineRepository;
-        private readonly IAnimalRepository _animalRepository;
         private readonly IMapper _mapper;
 
-        public MedicineService(IMedicineRepository medicineRepository, IAnimalRepository animalRepository, IMapper mapper )
+        public MedicineService(IMedicineRepository medicineRepository, IMapper mapper )
         {
             _medicineRepository = medicineRepository;
-            _animalRepository = animalRepository;
             _mapper = mapper;
         }
         public IEnumerable<MedicineDto> GetAllMedicines()
@@ -28,24 +26,13 @@ namespace Application.Services
             var medicines = _medicineRepository.GetAll();
             return _mapper.Map<IEnumerable<MedicineDto>>(medicines);
         }
-        public IEnumerable<MedicineWithAnimalsDto> GetAllMedicinesWithAnimals()
-        {
-            var medicines= _medicineRepository.GetAll();
-            return _mapper.Map<IEnumerable<MedicineWithAnimalsDto>>(medicines);
-
-        }
-
+        
         public MedicineDto GetMedicineById(int id)
         {
             var medicine = _medicineRepository.GetById(id);
             return _mapper.Map<MedicineDto>(medicine);
         }
 
-        public MedicineWithAnimalsDto GetMedicineWithAnimalsById(int id)
-        {
-            var medicine = _medicineRepository.GetById(id);
-            return _mapper.Map<MedicineWithAnimalsDto>(medicine);
-        }
         public MedicineDto AddNewMedicine(CreateMedicineDto newMedicine)
         {
             if (string.IsNullOrEmpty(newMedicine.Name))
@@ -76,5 +63,14 @@ namespace Application.Services
             _medicineRepository.Delete(medicine);
         }
 
+        public IEnumerable<MedicineWithAnimalsDto> GetAllMedicinesWithAnimals()
+        {
+            throw new NotImplementedException();
+        }
+
+        public MedicineWithAnimalsDto GetMedicineWithAnimalsById(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

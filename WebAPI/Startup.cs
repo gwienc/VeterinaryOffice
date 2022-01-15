@@ -35,6 +35,7 @@ namespace WebAPI
         {
             services.AddScoped<IVetService, VetService>();
             services.AddScoped<IOwnerService, OwnerService>();
+            services.AddScoped<IMedicineService, MedicineService>();
             services.AddScoped<IAnimalRepository, AnimalRepository>();
             services.AddScoped<IMedicineRepository, MedicineRepository>();
             services.AddScoped<IOwnerRepository, OwnerRepository>();
