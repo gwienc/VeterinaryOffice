@@ -1,6 +1,7 @@
 ﻿using Domain.Entities;
 using Domain.Interfaces;
 using Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,12 +20,12 @@ namespace Infrastructure.Repositories
         }
         public IQueryable<Animal> GetAll()
         {
-            return _context.Animals;
+            return _context.Animals.Include(x => x.Owner).Include(x => x.Owner.Animals);
         }
 
         public Animal GetById(int id)
         {
-            var animal = _context.Animals.Find(id);
+            var animal = _context.Animals.Include(x => x.Owner).Include(x => x.Owner.Animals).SingleOrDefault(x => x.Id == id);
             return animal;
         }
 

@@ -14,6 +14,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,6 +37,7 @@ namespace WebAPI
             services.AddScoped<IVetService, VetService>();
             services.AddScoped<IOwnerService, OwnerService>();
             services.AddScoped<IMedicineService, MedicineService>();
+            services.AddScoped<IAnimalService, AnimalService>();
             services.AddScoped<IAnimalRepository, AnimalRepository>();
             services.AddScoped<IMedicineRepository, MedicineRepository>();
             services.AddScoped<IOwnerRepository, OwnerRepository>();
@@ -43,12 +45,13 @@ namespace WebAPI
             services.AddScoped<IVisitRepository, VisitRepository>();
             services.AddSingleton(AutoMapperConfig.Initialize());
             services.AddDbContext<VeterinaryOfficeContext>(options => options.UseSqlServer(Configuration.GetConnectionString("VeterinaryOfficeConnectionString")));
-            services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.EnableAnnotations();
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebAPI", Version = "v1" });
             });
+            services.AddControllers().AddNewtonsoftJson(options =>
+            options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

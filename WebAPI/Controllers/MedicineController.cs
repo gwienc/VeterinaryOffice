@@ -51,12 +51,12 @@ namespace WebAPI.Controllers
 
         [HttpPut("{id}")]
         [SwaggerOperation(Summary = "Update a specific medicine by Id")]
-        public IActionResult Update(int id, UpdateMedicineDto medicie)
+        public IActionResult Update(int id, UpdateMedicineDto medicine)
         {
             var updatingMedicine = _medicineService.GetMedicineById(id);
             if (updatingMedicine != null)
             {
-                _medicineService.UpdateMedicine(id, medicie);
+                _medicineService.UpdateMedicine(id, medicine);
                 return NoContent();
             }
             return NotFound();
