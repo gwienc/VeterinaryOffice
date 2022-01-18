@@ -23,6 +23,8 @@ namespace Application.Mappings
             .ForMember(m => m.Medicines, map => map.MapFrom(animal => animal.Animals_Medicines.SelectMany(n => new List<string> { n.Medicine.Name })));            
             cfg.CreateMap<CreateAnimalDto, Animal>();
             cfg.CreateMap<UpdateAnimalDto, Animal>();
+            cfg.CreateMap<Animal, AnimalVisitDto>()
+            .ForMember(m => m.Medicines, map => map.MapFrom(animal => animal.Animals_Medicines.SelectMany(n => new List<string> { n.Medicine.Name })));
 
             #endregion
 
@@ -42,6 +44,7 @@ namespace Application.Mappings
             cfg.CreateMap<Owner, OwnerDto>();
             cfg.CreateMap<CreateOwnerDto, Owner>();
             cfg.CreateMap<UpdateOwnerDto, Owner>();
+            cfg.CreateMap<Owner, OwnerVisitDto>();
 
             #endregion
 

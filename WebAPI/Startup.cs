@@ -17,6 +17,7 @@ using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -34,10 +35,11 @@ namespace WebAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<IVetService, VetService>();
-            services.AddScoped<IOwnerService, OwnerService>();
-            services.AddScoped<IMedicineService, MedicineService>();
             services.AddScoped<IAnimalService, AnimalService>();
+            services.AddScoped<IMedicineService, MedicineService>();
+            services.AddScoped<IOwnerService, OwnerService>();
+            services.AddScoped<IVetService, VetService>();
+            services.AddScoped<IVisitService, VisitService>();
             services.AddScoped<IAnimalRepository, AnimalRepository>();
             services.AddScoped<IMedicineRepository, MedicineRepository>();
             services.AddScoped<IOwnerRepository, OwnerRepository>();
@@ -51,7 +53,7 @@ namespace WebAPI
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebAPI", Version = "v1" });
             });
             services.AddControllers().AddNewtonsoftJson(options =>
-            options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
+            options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);           
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
