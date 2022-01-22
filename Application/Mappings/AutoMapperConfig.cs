@@ -1,6 +1,7 @@
 ﻿using Application.DTO.Animal;
 using Application.DTO.Medicine;
 using Application.DTO.Owner;
+using Application.DTO.Prescription;
 using Application.DTO.Vet;
 using Application.DTO.Visit;
 using AutoMapper;
@@ -45,6 +46,14 @@ namespace Application.Mappings
             cfg.CreateMap<CreateOwnerDto, Owner>();
             cfg.CreateMap<UpdateOwnerDto, Owner>();
             cfg.CreateMap<Owner, OwnerVisitDto>();
+
+            #endregion
+
+            #region Prescription
+
+            cfg.CreateMap<Prescription, PrescriptionDto>();
+            cfg.CreateMap<CreatePrescriptionDto, Prescription>();
+            cfg.CreateMap<UpdatePrescriptionDto, Prescription>();
 
             #endregion
 
