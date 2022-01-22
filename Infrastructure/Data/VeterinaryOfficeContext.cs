@@ -20,7 +20,8 @@ namespace Infrastructure.Data
         public DbSet<Owner> Owners { get; set; }
         public DbSet<Vet> Vets { get; set; }
         public DbSet<Visit> Visits { get; set; }
-       
+        public DbSet<Prescription> Prescriptions { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
