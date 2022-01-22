@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace Application.IServices
 {
-    interface IPrescriptionService
+    public interface IPrescriptionService
     {
         IEnumerable<PrescriptionDto> GetAllPrescriptions();
         PrescriptionDto GetPrescriptionById(int id);
-        PrescriptionDto CreatePrescription(CreatePrescriptionDto newPrescription);
+        PrescriptionDto AddNewPrescription(CreatePrescriptionDto newPrescription);
         void UpdatePrescription(int id, UpdatePrescriptionDto prescription);
         void DeletePrescription(int id);
     }

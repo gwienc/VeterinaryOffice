@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 namespace Application.DTO.Prescription
 {
     public class CreatePrescriptionDto
-    {
-        public DateTime PrescriptionDate { get; set; }
+    {      
         public DateTime ValidityPeriod { get; set; }
 
         public int AnimalId { get; set; }

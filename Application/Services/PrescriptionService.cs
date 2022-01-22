@@ -36,7 +36,7 @@ namespace Application.Services
             var prescription = _prescriptionRepository.GetById(id);
             return _mapper.Map<PrescriptionDto>(prescription);
         }
-        public PrescriptionDto CreatePrescription(CreatePrescriptionDto newPrescription)
+        public PrescriptionDto AddNewPrescription(CreatePrescriptionDto newPrescription)
         {
             if (newPrescription.MedicineId == 0 || newPrescription.AnimalId == 0 )
             {
@@ -56,6 +56,8 @@ namespace Application.Services
             }
 
             var prescription = _mapper.Map<Prescription>(newPrescription);
+            prescription.PrescriptionDate = DateTime.UtcNow;
+            
             _prescriptionRepository.Add(prescription);
             
             return _mapper.Map<PrescriptionDto>(prescription);
@@ -66,6 +68,19 @@ namespace Application.Services
             {
                 throw new Exception("Prescription has to have id");
             }
+            
+            var animal = _animalRepository.GetById(prescription.AnimalId);
+            if (animal == null)
+            {
+                throw new Exception("This animal does not exist");
+            }
+            
+            var medicine = _medicineRepository.GetById(prescription.MedicineId);
+            if (medicine == null)
+            {
+                throw new Exception("This medicine does not exist");
+            }
+            
             var existingPrescription = _prescriptionRepository.GetById(id);
             var updatingPrescription = _mapper.Map(prescription, existingPrescription);
             

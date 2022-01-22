@@ -38,11 +38,13 @@ namespace WebAPI
             services.AddScoped<IAnimalService, AnimalService>();
             services.AddScoped<IMedicineService, MedicineService>();
             services.AddScoped<IOwnerService, OwnerService>();
+            services.AddScoped<IPrescriptionService, PrescriptionService>();
             services.AddScoped<IVetService, VetService>();
             services.AddScoped<IVisitService, VisitService>();
             services.AddScoped<IAnimalRepository, AnimalRepository>();
             services.AddScoped<IMedicineRepository, MedicineRepository>();
             services.AddScoped<IOwnerRepository, OwnerRepository>();
+            services.AddScoped<IPrescriptionRepository, PrescriptionRepository>();
             services.AddScoped<IVetRepository, VetRepository>();
             services.AddScoped<IVisitRepository, VisitRepository>();
             services.AddSingleton(AutoMapperConfig.Initialize());
