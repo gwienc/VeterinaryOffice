@@ -20,7 +20,7 @@ namespace Infrastructure.Data
         public DbSet<Owner> Owners { get; set; }
         public DbSet<Vet> Vets { get; set; }
         public DbSet<Visit> Visits { get; set; }
-
+       
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -135,16 +135,17 @@ namespace Infrastructure.Data
 
             #endregion
 
-            #region Animal_Medicine
-            
-            modelBuilder.Entity<Animal_Medicine>().HasKey(x => x.Id);
-            modelBuilder.Entity<Animal_Medicine>()
+            #region Prescription
+
+            modelBuilder.Entity<Prescription>().ToTable("Prescriptions");
+            modelBuilder.Entity<Prescription>().HasKey(x => x.Id);
+            modelBuilder.Entity<Prescription>()
                 .HasOne(x => x.Animal)
-                .WithMany(y => y.Animals_Medicines)
+                .WithMany(y => y.Prescriptions)
                 .HasForeignKey(c => c.AnimalId);
-            modelBuilder.Entity<Animal_Medicine>()
+            modelBuilder.Entity<Prescription>()
                 .HasOne(x => x.Medicine)
-                .WithMany(y => y.Animals_Medicines)
+                .WithMany(y => y.Prescriptions)
                 .HasForeignKey(c => c.MedicineId);
             
             #endregion

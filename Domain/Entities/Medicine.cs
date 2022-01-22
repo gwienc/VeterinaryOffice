@@ -12,6 +12,6 @@ namespace Domain.Entities
         public string Name { get; set; }
 
         //virtual properties
-        public virtual ICollection<Animal_Medicine> Animals_Medicines { get; set; }
+        public virtual ICollection<Prescription> Prescriptions { get; set; }
     }
 }

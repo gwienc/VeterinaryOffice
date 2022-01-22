@@ -19,7 +19,7 @@ namespace Domain.Entities
 
         //virtual properties
         public virtual ICollection<Visit> Visits { get; set; }
-        public virtual ICollection<Animal_Medicine> Animals_Medicines { get; set; }
+        public virtual ICollection<Prescription> Prescriptions { get; set; }
         public virtual Owner Owner { get; set; }
     }
 }

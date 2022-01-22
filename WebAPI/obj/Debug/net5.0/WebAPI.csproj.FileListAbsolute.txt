@@ -7,7 +7,10 @@ C:\Users\USER\Desktop\Visual\REST API\VeterinaryOffice\VeterinaryOffice\WebAPI\b
 C:\Users\USER\Desktop\Visual\REST API\VeterinaryOffice\VeterinaryOffice\WebAPI\bin\Debug\net5.0\WebAPI.dll
 C:\Users\USER\Desktop\Visual\REST API\VeterinaryOffice\VeterinaryOffice\WebAPI\bin\Debug\net5.0\ref\WebAPI.dll
 C:\Users\USER\Desktop\Visual\REST API\VeterinaryOffice\VeterinaryOffice\WebAPI\bin\Debug\net5.0\WebAPI.pdb
+C:\Users\USER\Desktop\Visual\REST API\VeterinaryOffice\VeterinaryOffice\WebAPI\bin\Debug\net5.0\AutoMapper.dll
 C:\Users\USER\Desktop\Visual\REST API\VeterinaryOffice\VeterinaryOffice\WebAPI\bin\Debug\net5.0\Humanizer.dll
+C:\Users\USER\Desktop\Visual\REST API\VeterinaryOffice\VeterinaryOffice\WebAPI\bin\Debug\net5.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\USER\Desktop\Visual\REST API\VeterinaryOffice\VeterinaryOffice\WebAPI\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 C:\Users\USER\Desktop\Visual\REST API\VeterinaryOffice\VeterinaryOffice\WebAPI\bin\Debug\net5.0\Microsoft.Data.SqlClient.dll
 C:\Users\USER\Desktop\Visual\REST API\VeterinaryOffice\VeterinaryOffice\WebAPI\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.dll
 C:\Users\USER\Desktop\Visual\REST API\VeterinaryOffice\VeterinaryOffice\WebAPI\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Abstractions.dll
@@ -23,6 +26,8 @@ C:\Users\USER\Desktop\Visual\REST API\VeterinaryOffice\VeterinaryOffice\WebAPI\b
 C:\Users\USER\Desktop\Visual\REST API\VeterinaryOffice\VeterinaryOffice\WebAPI\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
 C:\Users\USER\Desktop\Visual\REST API\VeterinaryOffice\VeterinaryOffice\WebAPI\bin\Debug\net5.0\Microsoft.OpenApi.dll
 C:\Users\USER\Desktop\Visual\REST API\VeterinaryOffice\VeterinaryOffice\WebAPI\bin\Debug\net5.0\Newtonsoft.Json.dll
+C:\Users\USER\Desktop\Visual\REST API\VeterinaryOffice\VeterinaryOffice\WebAPI\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
+C:\Users\USER\Desktop\Visual\REST API\VeterinaryOffice\VeterinaryOffice\WebAPI\bin\Debug\net5.0\Swashbuckle.AspNetCore.Annotations.dll
 C:\Users\USER\Desktop\Visual\REST API\VeterinaryOffice\VeterinaryOffice\WebAPI\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\USER\Desktop\Visual\REST API\VeterinaryOffice\VeterinaryOffice\WebAPI\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\USER\Desktop\Visual\REST API\VeterinaryOffice\VeterinaryOffice\WebAPI\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll
@@ -64,8 +69,3 @@ C:\Users\USER\Desktop\Visual\REST API\VeterinaryOffice\VeterinaryOffice\WebAPI\o
 C:\Users\USER\Desktop\Visual\REST API\VeterinaryOffice\VeterinaryOffice\WebAPI\obj\Debug\net5.0\ref\WebAPI.dll
 C:\Users\USER\Desktop\Visual\REST API\VeterinaryOffice\VeterinaryOffice\WebAPI\obj\Debug\net5.0\WebAPI.pdb
 C:\Users\USER\Desktop\Visual\REST API\VeterinaryOffice\VeterinaryOffice\WebAPI\obj\Debug\net5.0\WebAPI.genruntimeconfig.cache
-C:\Users\USER\Desktop\Visual\REST API\VeterinaryOffice\VeterinaryOffice\WebAPI\bin\Debug\net5.0\AutoMapper.dll
-C:\Users\USER\Desktop\Visual\REST API\VeterinaryOffice\VeterinaryOffice\WebAPI\bin\Debug\net5.0\Swashbuckle.AspNetCore.Annotations.dll
-C:\Users\USER\Desktop\Visual\REST API\VeterinaryOffice\VeterinaryOffice\WebAPI\bin\Debug\net5.0\Microsoft.AspNetCore.JsonPatch.dll
-C:\Users\USER\Desktop\Visual\REST API\VeterinaryOffice\VeterinaryOffice\WebAPI\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
-C:\Users\USER\Desktop\Visual\REST API\VeterinaryOffice\VeterinaryOffice\WebAPI\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
