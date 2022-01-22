@@ -26,13 +26,21 @@ namespace Application.Services
             var medicines = _medicineRepository.GetAll();
             return _mapper.Map<IEnumerable<MedicineDto>>(medicines);
         }
-        
+        public IEnumerable<MedicineWithAnimalsDto> GetAllMedicinesWithAnimals()
+        {
+            var medicinesWithAnimals = _medicineRepository.GetAll();
+            return _mapper.Map<IEnumerable<MedicineWithAnimalsDto>>(medicinesWithAnimals);
+        }
         public MedicineDto GetMedicineById(int id)
         {
             var medicine = _medicineRepository.GetById(id);
             return _mapper.Map<MedicineDto>(medicine);
         }
-
+        public MedicineWithAnimalsDto GetMedicineWithAnimalsById(int id)
+        {
+            var medicineWithAnimals = _medicineRepository.GetById(id);
+            return _mapper.Map<MedicineWithAnimalsDto>(medicineWithAnimals);
+        }
         public MedicineDto AddNewMedicine(CreateMedicineDto newMedicine)
         {
             if (string.IsNullOrEmpty(newMedicine.Name))
@@ -61,16 +69,6 @@ namespace Application.Services
         {
             var medicine = _medicineRepository.GetById(id);
             _medicineRepository.Delete(medicine);
-        }
-
-        public IEnumerable<MedicineWithAnimalsDto> GetAllMedicinesWithAnimals()
-        {
-            throw new NotImplementedException();
-        }
-
-        public MedicineWithAnimalsDto GetMedicineWithAnimalsById(int id)
-        {
-            throw new NotImplementedException();
         }
     }
 }

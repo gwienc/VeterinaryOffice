@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace Application.DTO.Medicine
 {
-    public class MedicineDto
+    public class MedicineWithAnimalsDto
     {
         public int Id { get; set; }
         public string Name { get; set; }
-    }   
+        public List<int> Animals { get; set; }
+    }
 }

@@ -29,6 +29,14 @@ namespace WebAPI.Controllers
             return Ok(medicines);
         }
 
+        [HttpGet("GetWithAnimals")]
+        [SwaggerOperation(Summary = "Get all medicines with animals")]
+        public IActionResult GetWithAnimals()
+        {
+            var medicinesWithAnimals = _medicineService.GetAllMedicinesWithAnimals();
+            return Ok(medicinesWithAnimals);
+        }
+        
         [HttpGet("{id}")]
         [SwaggerOperation(Summary = "Get specyfic medicine by Id")]
         public IActionResult GetById(int id)
@@ -40,6 +48,18 @@ namespace WebAPI.Controllers
             }
             return NotFound();
         }
+        
+        [HttpGet("GetByIdWithAnimals/{id}")]
+        [SwaggerOperation(Summary = "Get specyfic medicine with animals by Id")]
+        public IActionResult GetByIdWithAnimals(int id)
+        {
+            var exisitingMecicine = _medicineService.GetMedicineWithAnimalsById(id);
+            if (exisitingMecicine != null)
+            {
+                return Ok(exisitingMecicine);
+            }
+            return NotFound();
+        }       
 
         [HttpPost]
         [SwaggerOperation(Summary = "Add new medicine")]
