@@ -21,7 +21,9 @@ namespace Application.Mappings
             #region Animal
 
             cfg.CreateMap<Animal, AnimalDto>()
-            .ForMember(m => m.Medicines, map => map.MapFrom(animal => animal.Prescriptions.SelectMany(n => new List<int> { n.MedicineId })));            
+            .ForMember(m => m.Medicines, map => map.MapFrom(animal => animal.Prescriptions.SelectMany(n => new List<int> { n.MedicineId })));
+            cfg.CreateMap<Animal, AnimalShortDto>()
+            .ForMember(m => m.Medicines, map => map.MapFrom(animal => animal.Prescriptions.SelectMany(n => new List<int> { n.MedicineId })));
             cfg.CreateMap<CreateAnimalDto, Animal>();
             cfg.CreateMap<UpdateAnimalDto, Animal>();           
 

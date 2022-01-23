@@ -15,6 +15,6 @@ namespace Application.DTO.Owner
         public string Street { get; set; }
         public string PostCode { get; set; }
         public string City { get; set; }
-        public List<AnimalDto> Animals { get; set; }
+        public List<AnimalShortDto> Animals { get; set; }
     }
 }
