@@ -15,7 +15,7 @@ namespace Application.DTO.Visit
         public string Description { get; set; }
         public DateTime VisitDate { get; set; }
         public DateTime LastModifiedVisit { get; set; }
-        public AnimalVisitDto Animal { get; set; }
+        public AnimalDto Animal { get; set; }
         public VetDto Vet { get; set; }
     }
 }

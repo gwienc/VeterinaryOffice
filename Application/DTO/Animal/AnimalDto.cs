@@ -1,5 +1,4 @@
 ﻿using Application.DTO.Owner;
-using Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +16,7 @@ namespace Application.DTO.Animal
         public int Age { get; set; }
         public double Weight { get; set; }
         public string Gender { get; set; }
-        public OwnerDto Owner { get; set; }
-        public List<string> Medicines { get; set; }
+        public OwnerShortDto Owner { get; set; }
+        public List<int> Medicines { get; set; }
     }
 }

@@ -64,7 +64,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpDelete("{id}")]
-        [SwaggerOperation(Summary = "Update a specific animal by Id")]
+        [SwaggerOperation(Summary = "Delete a specific animal by Id")]
         public IActionResult Delete(int id)
         {
             var animal = _animalService.GetAnimalById(id);
