@@ -20,12 +20,12 @@ namespace Infrastructure.Repositories
         }
         public IQueryable<Visit> GetAll()
         {
-            return _context.Visits.Include(x => x.Animal).Include(x => x.Vet).Include(x => x.Animal.Owner);
+            return _context.Visits.Include(x => x.Animal).Include(x => x.Vet).Include(x => x.Animal.Owner).Include(x => x.Animal.Prescriptions);
         }
 
         public Visit GetById(int id)
         {
-            var visit = _context.Visits.Where(x => x.Id == id).Include(x => x.Animal).Include(x => x.Vet).Include(x => x.Animal.Owner).SingleOrDefault();
+            var visit = _context.Visits.Where(x => x.Id == id).Include(x => x.Animal).Include(x => x.Vet).Include(x => x.Animal.Owner).Include(x => x.Animal.Prescriptions).SingleOrDefault();
             return visit;
         }
 
