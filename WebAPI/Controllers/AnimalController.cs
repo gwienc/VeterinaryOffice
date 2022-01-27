@@ -46,21 +46,47 @@ namespace WebAPI.Controllers
         [SwaggerOperation(Summary = "Add new animal")]
         public IActionResult Create(CreateAnimalDto animal)
         {
-            var newAnimal = _animalService.AddNewAnimal(animal);
-            return CreatedAtAction(nameof(GetById), new { id = newAnimal.Id }, newAnimal);
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            try
+            {
+                var newAnimal = _animalService.AddNewAnimal(animal);
+                return CreatedAtAction(nameof(GetById), new { id = newAnimal.Id }, newAnimal);
+            }
+            catch (Exception e)
+            {
+
+                return BadRequest(e.Message);
+            }
+            
         }
 
         [HttpPut("{id}")]
         [SwaggerOperation(Summary = "Update a specific animal by Id")]
         public IActionResult Update(int id, UpdateAnimalDto animal)
         {
-            var updatingAnimal = _animalService.GetAnimalById(id);
-            if (updatingAnimal != null)
+            if (!ModelState.IsValid)
             {
-                _animalService.UpdateAnimal(id, animal);
-                return NoContent();
+                return BadRequest(ModelState);
             }
-            return NotFound();
+            try
+            {
+                var updatingAnimal = _animalService.GetAnimalById(id);
+                if (updatingAnimal != null)
+                {
+                    _animalService.UpdateAnimal(id, animal);
+                    return NoContent();
+                }
+                return NotFound();
+            }
+            catch (Exception e)
+            {
+
+                return BadRequest(e.Message);
+            }
+            
         }
 
         [HttpDelete("{id}")]

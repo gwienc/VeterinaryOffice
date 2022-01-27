@@ -46,22 +46,47 @@ namespace WebAPI.Controllers
         [SwaggerOperation(Summary = "Add new visit")]
         public IActionResult Create(CreateVisitDto visit)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
-            var newVisit = _visitService.AddNewVisit(visit);
-            return CreatedAtAction(nameof(GetById), new { id = newVisit.Id }, newVisit);
+            try
+            {
+                var newVisit = _visitService.AddNewVisit(visit);
+                return CreatedAtAction(nameof(GetById), new { id = newVisit.Id }, newVisit);
+            }
+            catch (Exception e)
+            {
+
+                return BadRequest(e.Message);
+            }
+           
         }
 
         [HttpPut("{id}")]
         [SwaggerOperation(Summary = "Update a specific visit by Id")]
         public IActionResult Update(int id, UpdateVisitDto visit)
         {
-            var updatingVisit = _visitService.GetVisitById(id);
-            if (updatingVisit != null)
+            if (!ModelState.IsValid)
             {
-                _visitService.UpdateVisit(id, visit);
-                return NoContent();
+                return BadRequest(ModelState);
             }
-            return NotFound();
+            try
+            {
+                var updatingVisit = _visitService.GetVisitById(id);
+                if (updatingVisit != null)
+                {
+                    _visitService.UpdateVisit(id, visit);
+                    return NoContent();
+                }
+                return NotFound();
+            }
+            catch (Exception e)
+            {
+
+                return BadRequest(e.Message);
+            }           
         }
 
         [HttpDelete("{id}")]

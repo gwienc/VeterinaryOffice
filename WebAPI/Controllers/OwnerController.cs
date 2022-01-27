@@ -45,6 +45,10 @@ namespace WebAPI.Controllers
         [SwaggerOperation(Summary = "Add a new owner")]
         public IActionResult Create(CreateOwnerDto owner)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
             var newOwner = _ownerService.AddNewOwner(owner);
             return CreatedAtAction(nameof(GetById), new { id = newOwner.Id }, newOwner);
         }
@@ -53,6 +57,10 @@ namespace WebAPI.Controllers
         [SwaggerOperation(Summary = "Update a specific owner by Id")]
         public IActionResult Update(int id, UpdateOwnerDto owner)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
             var updatedOwner = _ownerService.GetOwnerById(id);
             if (updatedOwner != null)
             {

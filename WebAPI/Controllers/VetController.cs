@@ -47,6 +47,10 @@ namespace WebAPI.Controllers
         [SwaggerOperation(Summary = "Add a new vet")]
         public IActionResult Create(CreateVetDto vet)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
             var newVet = _vetService.AddNewVet(vet);
             return CreatedAtAction(nameof(GetById), new { id = newVet.Id }, newVet);
         }
@@ -55,6 +59,10 @@ namespace WebAPI.Controllers
         [SwaggerOperation(Summary = "Update a specific vet by Id")]
         public IActionResult Update(int id, UpdateVetDto vet)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
             var updatedVet = _vetService.GetVetById(id);
             if (updatedVet != null)
             {

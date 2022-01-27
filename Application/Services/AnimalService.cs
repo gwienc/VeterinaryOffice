@@ -36,16 +36,11 @@ namespace Application.Services
         }
 
         public AnimalDto AddNewAnimal(CreateAnimalDto newAnimal)
-        {
-            if(string.IsNullOrEmpty(newAnimal.Name))
-            {
-                throw new Exception("Animal can not has empty Name");
-            }
-
+        {          
             var owner = _ownerRepository.GetById(newAnimal.OwnerId);
             if (owner == null)
             {
-                throw new Exception("This owner does not exist");
+                    throw new Exception("This owner does not exist");
             }
             
             var animal = _mapper.Map<Animal>(newAnimal);
@@ -56,12 +51,14 @@ namespace Application.Services
 
         public void UpdateAnimal(int id, UpdateAnimalDto animal)
         {
-            if (string.IsNullOrEmpty(animal.Name))
+            var existingAnimal = _animalRepository.GetById(id);
+            
+            var owner = _ownerRepository.GetById(animal.OwnerId);
+            if (owner == null)
             {
-                throw new Exception("Animal can not has empty Name");
+                throw new Exception("This owner does not exist");
             }
 
-            var existingAnimal = _animalRepository.GetById(id);
             var updatedAnimal = _mapper.Map(animal, existingAnimal);
 
             _animalRepository.Update(updatedAnimal);

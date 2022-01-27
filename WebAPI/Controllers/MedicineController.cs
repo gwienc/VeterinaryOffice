@@ -73,6 +73,10 @@ namespace WebAPI.Controllers
         [SwaggerOperation(Summary = "Update a specific medicine by Id")]
         public IActionResult Update(int id, UpdateMedicineDto medicine)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
             var updatingMedicine = _medicineService.GetMedicineById(id);
             if (updatingMedicine != null)
             {

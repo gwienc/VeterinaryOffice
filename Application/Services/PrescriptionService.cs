@@ -40,7 +40,7 @@ namespace Application.Services
         {
             if (newPrescription.MedicineId == 0 || newPrescription.AnimalId == 0 )
             {
-                throw new Exception("Prescription has to have animal and medicine");
+                throw new Exception("Animal ID and Medicine ID are required and cannot be 0");
             }
 
             var animal = _animalRepository.GetById(newPrescription.AnimalId);
@@ -56,19 +56,14 @@ namespace Application.Services
             }
 
             var prescription = _mapper.Map<Prescription>(newPrescription);
-            prescription.PrescriptionDate = DateTime.UtcNow;
+            prescription.PrescriptionDate = DateTime.Now;
             
             _prescriptionRepository.Add(prescription);
             
             return _mapper.Map<PrescriptionDto>(prescription);
         }
         public void UpdatePrescription(int id, UpdatePrescriptionDto prescription)
-        {
-            if (prescription.Id == 0)
-            {
-                throw new Exception("Prescription has to have id");
-            }
-            
+        {           
             var animal = _animalRepository.GetById(prescription.AnimalId);
             if (animal == null)
             {

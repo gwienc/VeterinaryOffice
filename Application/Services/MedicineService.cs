@@ -43,11 +43,6 @@ namespace Application.Services
         }
         public MedicineDto AddNewMedicine(CreateMedicineDto newMedicine)
         {
-            if (string.IsNullOrEmpty(newMedicine.Name))
-            {
-                throw new Exception("Medicine can not has empty name");
-            }
-
             var medicine = _mapper.Map<Medicine>(newMedicine);
             _medicineRepository.Add(medicine);
             return _mapper.Map<MedicineDto>(medicine);
@@ -55,11 +50,6 @@ namespace Application.Services
 
         public void UpdateMedicine(int id, UpdateMedicineDto medicine)
         {
-            if (string.IsNullOrEmpty(medicine.Name))
-            {
-                throw new Exception("Medicine can not has empty name");
-            }
-
             var existingMedicine = _medicineRepository.GetById(id);
             var updatedMedicine = _mapper.Map(medicine, existingMedicine);
             _medicineRepository.Update(updatedMedicine);

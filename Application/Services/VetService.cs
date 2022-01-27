@@ -34,12 +34,7 @@ namespace Application.Services
         }
 
         public VetDto AddNewVet(CreateVetDto newVet)
-        {
-            if(string.IsNullOrEmpty(newVet.FirstName))
-            {
-                throw new Exception("Vet can not has empty FirstName");
-            }
-
+        {          
             var vet = _mapper.Map<Vet>(newVet);
             _vetRepository.Add(vet);
 
@@ -48,11 +43,6 @@ namespace Application.Services
 
         public void UpdateVet(int id, UpdateVetDto vet)
         {
-            if (string.IsNullOrEmpty(vet.FirstName))
-            {
-                throw new Exception("Vet can not has empty FirstName");
-            }
-
             var existingVet = _vetRepository.GetById(id);
             var updatedVet = _mapper.Map(vet, existingVet);
 

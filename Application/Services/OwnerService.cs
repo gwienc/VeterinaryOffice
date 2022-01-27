@@ -36,12 +36,7 @@ namespace Application.Services
         }
 
         public OwnerDto AddNewOwner(CreateOwnerDto newOwner)
-        {
-            if(string.IsNullOrEmpty(newOwner.FirstName))
-            {
-                throw new Exception("Owner can not has empty First Name");
-            }
-            
+        {                      
             var owner = _mapper.Map<Owner>(newOwner);
             _ownerRepository.Add(owner);
             
@@ -50,11 +45,6 @@ namespace Application.Services
 
         public void UpdateOwner(int id, UpdateOwnerDto owner)
         {
-            if (string.IsNullOrEmpty(owner.FirstName))
-            {
-                throw new Exception("Owner can not has empty First Name");
-            }
-            
             var existingOwner = _ownerRepository.GetById(id);
             var updatedOwner = _mapper.Map(owner, existingOwner);
             

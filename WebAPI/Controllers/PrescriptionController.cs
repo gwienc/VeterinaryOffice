@@ -45,21 +45,47 @@ namespace WebAPI.Controllers
         [SwaggerOperation(Summary = "Create a new prescription")]
         public IActionResult Create(CreatePrescriptionDto prescription)
         {
-            var newPrescription = _prescriptionService.AddNewPrescription(prescription);
-            return CreatedAtAction(nameof(GetById), new { id = newPrescription.Id }, newPrescription);
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            try
+            {
+                var newPrescription = _prescriptionService.AddNewPrescription(prescription);
+                return CreatedAtAction(nameof(GetById), new { id = newPrescription.Id }, newPrescription);
+            }
+            catch (Exception e)
+            {
+
+                return BadRequest(e.Message);
+            }
+            
         }
 
         [HttpPut("{id}")]
         [SwaggerOperation(Summary = "Update a specific prescription by Id")]
         public IActionResult Update(int id, UpdatePrescriptionDto prescription)
         {
-            var updatingPrescription = _prescriptionService.GetPrescriptionById(id);
-            if (updatingPrescription != null)
+            if (!ModelState.IsValid)
             {
-                _prescriptionService.UpdatePrescription(id, prescription);
-                return NoContent();
+                return BadRequest(ModelState);
             }
-            return NotFound();
+            try
+            {
+                var updatingPrescription = _prescriptionService.GetPrescriptionById(id);
+                if (updatingPrescription != null)
+                {
+                    _prescriptionService.UpdatePrescription(id, prescription);
+                    return NoContent();
+                }
+                return NotFound();
+            }
+            catch (Exception e)
+            {
+
+                return BadRequest(e.Message);
+            }
+            
            
         }
 

@@ -38,12 +38,7 @@ namespace Application.Services
         }
 
         public VisitDto AddNewVisit(CreateVisitDto newVisit)
-        {
-            if (string.IsNullOrEmpty(newVisit.VisitType))
-            {
-                throw new Exception("Visit can not has empty type of visit");
-            }
-
+        {          
             var animal = _animalRepository.GetById(newVisit.AnimalId);
             if (animal == null)
             {
@@ -58,8 +53,8 @@ namespace Application.Services
 
             var visit = _mapper.Map<Visit>(newVisit);
             
-            visit.LastModifiedVisit = DateTime.UtcNow;
-            visit.RegistrationDate = DateTime.UtcNow;
+            visit.LastModifiedVisit = DateTime.Now;
+            visit.RegistrationDate = DateTime.Now;
             
             _visitRepository.Add(visit);
 
@@ -68,14 +63,21 @@ namespace Application.Services
 
         public void UpdateVisit(int id, UpdateVisitDto visit)
         {
-            if (string.IsNullOrEmpty(visit.VisitType))
+            var animal = _animalRepository.GetById(visit.AnimalId);
+            if (animal == null)
             {
-                throw new Exception("Visit can not has empty type of visit");
+                throw new Exception("This animal does not exist");
+            }
+
+            var vet = _vetRepository.GetById(visit.VetId);
+            if (vet == null)
+            {
+                throw new Exception("This Vet does not exist");
             }
 
             var existingVisit = _visitRepository.GetById(id);           
             var updatedVisit = _mapper.Map(visit, existingVisit);
-            updatedVisit.LastModifiedVisit = DateTime.UtcNow;
+            updatedVisit.LastModifiedVisit = DateTime.Now;
 
             _visitRepository.Update(updatedVisit);
         }
