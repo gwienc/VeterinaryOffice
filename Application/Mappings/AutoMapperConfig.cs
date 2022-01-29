@@ -25,7 +25,7 @@ namespace Application.Mappings
             cfg.CreateMap<Animal, AnimalShortDto>()
             .ForMember(m => m.Medicines, map => map.MapFrom(animal => animal.Prescriptions.SelectMany(n => new List<int> { n.MedicineId })));
             cfg.CreateMap<CreateAnimalDto, Animal>();
-            cfg.CreateMap<UpdateAnimalDto, Animal>();           
+            cfg.CreateMap<UpdateAnimalDto, Animal>().ReverseMap();
 
             #endregion
 

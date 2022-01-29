@@ -1,6 +1,7 @@
 ﻿using Application.DTO.Animal;
 using Application.IServices;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 using System;
@@ -87,6 +88,34 @@ namespace WebAPI.Controllers
                 return BadRequest(e.Message);
             }
             
+        }
+
+        [HttpPatch("{id}")]
+        [SwaggerOperation(Summary = "Update a specific animal properties by animal Id")]
+        public IActionResult PartialUpdate(int id, JsonPatchDocument<UpdateAnimalDto> animal)
+        {          
+            try
+            {
+                var updatingAnimal = _animalService.GetAnimalById(id);
+                if (updatingAnimal != null)
+                {
+                    var animalToPatch = _animalService.PartialUpdateAnimal(id, animal);
+                    if (!TryValidateModel(animalToPatch))
+                    {
+                        return ValidationProblem(ModelState);
+                    }
+
+                    _animalService.UpdateAnimal(id, animalToPatch);
+
+                    return NoContent();
+                }
+                return NotFound();
+            }
+            catch (Exception e)
+            {
+
+                return BadRequest(e.Message);
+            }
         }
 
         [HttpDelete("{id}")]

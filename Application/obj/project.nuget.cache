@@ -1,11 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "qMznUDWPn/wSOv4TsLLH86wgLpfdJk9eWznnjjXoNkt6aw01BpHI1Ib9LKVxDBBmiyJMVJQFzE1xI/uwGkku1A==",
+  "dgSpecHash": "xjXME/TE878iObrdQ/kDuBonG3nhzLkVx6JjVo0CSdkmUQU4joPamd+dvUk6DFwbOLMhkk1uiwtbNaJQN4sX6w==",
   "success": true,
   "projectFilePath": "C:\\Users\\USER\\Desktop\\Visual\\REST API\\VeterinaryOffice\\VeterinaryOffice\\Application\\Application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\USER\\.nuget\\packages\\automapper\\11.0.0\\automapper.11.0.0.nupkg.sha512",
-    "C:\\Users\\USER\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512"
+    "C:\\Users\\USER\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\5.0.13\\microsoft.aspnetcore.jsonpatch.5.0.13.nupkg.sha512",
+    "C:\\Users\\USER\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\5.0.13\\microsoft.aspnetcore.mvc.newtonsoftjson.5.0.13.nupkg.sha512",
+    "C:\\Users\\USER\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
+    "C:\\Users\\USER\\.nuget\\packages\\newtonsoft.json\\12.0.2\\newtonsoft.json.12.0.2.nupkg.sha512",
+    "C:\\Users\\USER\\.nuget\\packages\\newtonsoft.json.bson\\1.0.2\\newtonsoft.json.bson.1.0.2.nupkg.sha512"
   ],
   "logs": []
 }
