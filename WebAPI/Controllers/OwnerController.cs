@@ -1,6 +1,7 @@
 ﻿using Application.DTO.Owner;
 using Application.IServices;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 using System;
@@ -68,6 +69,34 @@ namespace WebAPI.Controllers
                 return NoContent();
             }
             return NotFound();
+        }
+
+        [HttpPatch("{id}")]
+        [SwaggerOperation(Summary = "Update a specific owner properties by owner Id")]
+        public IActionResult PartialUpdate(int id, JsonPatchDocument<UpdateOwnerDto> owner)
+        {
+            try
+            {
+                var updatingOwner = _ownerService.GetOwnerById(id);
+                if (updatingOwner != null)
+                {
+                    var ownerToPatch = _ownerService.PartialUpdateOwner(id, owner);
+                    if (!TryValidateModel(ownerToPatch))
+                    {
+                        return ValidationProblem(ModelState);
+                    }
+
+                    _ownerService.UpdateOwner(id, ownerToPatch);
+
+                    return NoContent();
+                }
+                return NotFound();
+            }
+            catch (Exception e)
+            {
+
+                return BadRequest(e.Message);
+            }
         }
 
         [HttpDelete("{id}")]

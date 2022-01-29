@@ -3,6 +3,7 @@ using Application.IServices;
 using AutoMapper;
 using Domain.Entities;
 using Domain.Interfaces;
+using Microsoft.AspNetCore.JsonPatch;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -51,11 +52,19 @@ namespace Application.Services
             _ownerRepository.Update(updatedOwner);
         }
 
+        public UpdateOwnerDto PartialUpdateOwner(int id, JsonPatchDocument<UpdateOwnerDto> owner)
+        {
+            var existingOwner = _ownerRepository.GetById(id);
+            var ownerToPatch = _mapper.Map<UpdateOwnerDto>(existingOwner);
+            owner.ApplyTo(ownerToPatch);
+
+            return ownerToPatch;
+        }
+
         public void DeleteOwner(int id)
         {
             var owner = _ownerRepository.GetById(id);
             _ownerRepository.Delete(owner);
-        }
-
+        }       
     }
 }

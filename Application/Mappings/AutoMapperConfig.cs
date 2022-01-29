@@ -44,7 +44,7 @@ namespace Application.Mappings
 
             cfg.CreateMap<Owner, OwnerDto>();
             cfg.CreateMap<CreateOwnerDto, Owner>();
-            cfg.CreateMap<UpdateOwnerDto, Owner>();
+            cfg.CreateMap<UpdateOwnerDto, Owner>().ReverseMap();
             cfg.CreateMap<Owner, OwnerShortDto>();
 
             #endregion
