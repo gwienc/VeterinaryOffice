@@ -1,4 +1,5 @@
 ﻿using Application.DTO.Medicine;
+using Microsoft.AspNetCore.JsonPatch;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,7 @@ namespace Application.IServices
         MedicineWithAnimalsDto GetMedicineWithAnimalsById(int id);
         MedicineDto AddNewMedicine(CreateMedicineDto newMedicine);
         void UpdateMedicine(int id, UpdateMedicineDto medicine);
+        UpdateMedicineDto PartialUpdateMedicine(int id, JsonPatchDocument<UpdateMedicineDto> medicine);
         void DeleteMedicine(int id);
     }
 }

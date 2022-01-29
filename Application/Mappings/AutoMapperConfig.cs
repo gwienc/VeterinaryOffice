@@ -33,7 +33,7 @@ namespace Application.Mappings
 
             cfg.CreateMap<Medicine, MedicineDto>();
             cfg.CreateMap<CreateMedicineDto, Medicine>();
-            cfg.CreateMap<UpdateMedicineDto, Medicine>();
+            cfg.CreateMap<UpdateMedicineDto, Medicine>().ReverseMap();
 
             cfg.CreateMap<Medicine, MedicineWithAnimalsDto>()
             .ForMember(m => m.Animals, map => map.MapFrom(medicine => medicine.Prescriptions.SelectMany(n => new List<int> { n.AnimalId })));

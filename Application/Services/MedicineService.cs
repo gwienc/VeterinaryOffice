@@ -3,6 +3,7 @@ using Application.IServices;
 using AutoMapper;
 using Domain.Entities;
 using Domain.Interfaces;
+using Microsoft.AspNetCore.JsonPatch;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -55,10 +56,20 @@ namespace Application.Services
             _medicineRepository.Update(updatedMedicine);
         }
 
+        public UpdateMedicineDto PartialUpdateMedicine(int id, JsonPatchDocument<UpdateMedicineDto> medicine)
+        {
+            var existingMedicine = _medicineRepository.GetById(id);
+            var medicineToPatch = _mapper.Map<UpdateMedicineDto>(existingMedicine);
+            medicine.ApplyTo(medicineToPatch);
+
+            return medicineToPatch;
+        }
+
         public void DeleteMedicine(int id)
         {
             var medicine = _medicineRepository.GetById(id);
             _medicineRepository.Delete(medicine);
         }
+        
     }
 }
