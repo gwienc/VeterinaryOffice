@@ -1,6 +1,7 @@
 ﻿using Application.DTO.Prescription;
 using Application.IServices;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 using System;
@@ -87,6 +88,34 @@ namespace WebAPI.Controllers
             }
             
            
+        }
+
+        [HttpPatch("{id}")]
+        [SwaggerOperation(Summary = "Update a specific prescription properties by prescription Id")]
+        public IActionResult PartialUpdate(int id, JsonPatchDocument<UpdatePrescriptionDto> prescription)
+        {
+            try
+            {
+                var updatingPrescription = _prescriptionService.GetPrescriptionById(id);
+                if (updatingPrescription != null)
+                {
+                    var prescriptionToPatch = _prescriptionService.PartialUpdatePrescription(id, prescription);
+                    if (!TryValidateModel(prescriptionToPatch))
+                    {
+                        return ValidationProblem(ModelState);
+                    }
+
+                    _prescriptionService.UpdatePrescription(id, prescriptionToPatch);
+
+                    return NoContent();
+                }
+                return NotFound();
+            }
+            catch (Exception e)
+            {
+
+                return BadRequest(e.Message);
+            }
         }
 
         [HttpDelete("{id}")]

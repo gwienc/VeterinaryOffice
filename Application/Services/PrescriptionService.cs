@@ -3,6 +3,7 @@ using Application.IServices;
 using AutoMapper;
 using Domain.Entities;
 using Domain.Interfaces;
+using Microsoft.AspNetCore.JsonPatch;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -81,6 +82,14 @@ namespace Application.Services
             
             _prescriptionRepository.Update(updatingPrescription);
             
+        }
+        public UpdatePrescriptionDto PartialUpdatePrescription(int id, JsonPatchDocument<UpdatePrescriptionDto> prescription)
+        {
+            var existingPrescription = _prescriptionRepository.GetById(id);
+            var prescriptionToPatch = _mapper.Map<UpdatePrescriptionDto>(existingPrescription);
+            prescription.ApplyTo(prescriptionToPatch);
+
+            return prescriptionToPatch;
         }
         public void DeletePrescription(int id)
         {

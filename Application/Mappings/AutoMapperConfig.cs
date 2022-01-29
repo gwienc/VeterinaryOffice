@@ -53,7 +53,7 @@ namespace Application.Mappings
 
             cfg.CreateMap<Prescription, PrescriptionDto>();
             cfg.CreateMap<CreatePrescriptionDto, Prescription>();
-            cfg.CreateMap<UpdatePrescriptionDto, Prescription>();
+            cfg.CreateMap<UpdatePrescriptionDto, Prescription>().ReverseMap();
 
             #endregion
 
