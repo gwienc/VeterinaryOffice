@@ -70,7 +70,7 @@ namespace Application.Mappings
 
             cfg.CreateMap<Visit, VisitDto>();
             cfg.CreateMap<CreateVisitDto, Visit>();
-            cfg.CreateMap<UpdateVisitDto, Visit>();
+            cfg.CreateMap<UpdateVisitDto, Visit>().ReverseMap();
 
             #endregion
 

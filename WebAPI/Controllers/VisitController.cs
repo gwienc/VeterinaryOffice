@@ -2,6 +2,7 @@
 using Application.IServices;
 using Domain.Interfaces;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 using System;
@@ -89,6 +90,33 @@ namespace WebAPI.Controllers
             }           
         }
 
+        [HttpPatch("{id}")]
+        [SwaggerOperation(Summary = "Update a specific visit properties by visit Id ")]
+        public IActionResult PartialUpdate(int id, JsonPatchDocument<UpdateVisitDto> visit)
+        {
+            try
+            {
+                var updatingVisit = _visitService.GetVisitById(id);
+                if (updatingVisit != null)
+                {
+                    var visitToPatch = _visitService.PartialUpdateVisit(id, visit);
+                    if (!TryValidateModel(visitToPatch))
+                    {
+                        return ValidationProblem(ModelState);
+                    }
+
+                    _visitService.UpdateVisit(id, visitToPatch);
+
+                    return NoContent();
+                }
+                return NotFound();
+            }
+            catch (Exception e)
+            {
+
+                return BadRequest(e.Message);
+            }
+        }
         [HttpDelete("{id}")]
         [SwaggerOperation(Summary = "Delete a specific visit by Id")]
         public IActionResult Delete(int id)
