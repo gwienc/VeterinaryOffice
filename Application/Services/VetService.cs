@@ -3,6 +3,7 @@ using Application.IServices;
 using AutoMapper;
 using Domain.Entities;
 using Domain.Interfaces;
+using Microsoft.AspNetCore.JsonPatch;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -48,11 +49,18 @@ namespace Application.Services
 
             _vetRepository.Update(updatedVet);
         }
+        public UpdateVetDto PartialUpdateVet(int id, JsonPatchDocument<UpdateVetDto> vet)
+        {
+            var existingVet = _vetRepository.GetById(id);
+            var vetToPatch = _mapper.Map<UpdateVetDto>(existingVet);
+            vet.ApplyTo(vetToPatch);
 
+            return vetToPatch;
+        }
         public void DeleteVet(int id)
         {
             var vet = _vetRepository.GetById(id);
             _vetRepository.Delete(vet);
-        }
+        }       
     }
 }

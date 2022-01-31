@@ -61,7 +61,7 @@ namespace Application.Mappings
 
             cfg.CreateMap<Vet, VetDto>();
             cfg.CreateMap<CreateVetDto, Vet>();
-            cfg.CreateMap<UpdateVetDto, Vet>();
+            cfg.CreateMap<UpdateVetDto, Vet>().ReverseMap();
 
             #endregion
 

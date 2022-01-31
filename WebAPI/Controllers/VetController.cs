@@ -1,6 +1,7 @@
 ﻿using Application.DTO.Vet;
 using Application.IServices;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 using System;
@@ -71,6 +72,34 @@ namespace WebAPI.Controllers
             }
             return NotFound();
             
+        }
+
+        [HttpPatch("{id}")]
+        [SwaggerOperation(Summary = "Update a specific vet properties by vet Id")]
+        public IActionResult PartialUpdate(int id, JsonPatchDocument<UpdateVetDto> vet)
+        {
+            try
+            {
+                var updatingVet = _vetService.GetVetById(id);
+                if (updatingVet != null)
+                {
+                    var vetToPatch = _vetService.PartialUpdateVet(id, vet);
+                    if (!TryValidateModel(vetToPatch))
+                    {
+                        return ValidationProblem(ModelState);
+                    }
+
+                    _vetService.UpdateVet(id, vetToPatch);
+
+                    return NoContent();
+                }
+                return NotFound();
+            }
+            catch (Exception e)
+            {
+
+                return BadRequest(e.Message);
+            }
         }
 
         [HttpDelete("{id}")]
