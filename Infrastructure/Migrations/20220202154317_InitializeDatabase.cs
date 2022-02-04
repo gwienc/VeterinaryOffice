@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Infrastructure.Migrations
 {
-    public partial class CreateDatabase : Migration
+    public partial class InitializeDatabase : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -77,25 +77,27 @@ namespace Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Animal_Medicine",
+                name: "Prescriptions",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    PrescriptionDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ValidityPeriod = table.Column<DateTime>(type: "datetime2", nullable: false),
                     AnimalId = table.Column<int>(type: "int", nullable: false),
                     MedicineId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Animal_Medicine", x => x.Id);
+                    table.PrimaryKey("PK_Prescriptions", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Animal_Medicine_Animals_AnimalId",
+                        name: "FK_Prescriptions_Animals_AnimalId",
                         column: x => x.AnimalId,
                         principalTable: "Animals",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Animal_Medicine_Medicines_MedicineId",
+                        name: "FK_Prescriptions_Medicines_MedicineId",
                         column: x => x.MedicineId,
                         principalTable: "Medicines",
                         principalColumn: "Id",
@@ -134,19 +136,19 @@ namespace Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Animal_Medicine_AnimalId",
-                table: "Animal_Medicine",
-                column: "AnimalId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Animal_Medicine_MedicineId",
-                table: "Animal_Medicine",
-                column: "MedicineId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Animals_OwnerId",
                 table: "Animals",
                 column: "OwnerId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Prescriptions_AnimalId",
+                table: "Prescriptions",
+                column: "AnimalId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Prescriptions_MedicineId",
+                table: "Prescriptions",
+                column: "MedicineId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Visits_AnimalId",
@@ -162,7 +164,7 @@ namespace Infrastructure.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Animal_Medicine");
+                name: "Prescriptions");
 
             migrationBuilder.DropTable(
                 name: "Visits");

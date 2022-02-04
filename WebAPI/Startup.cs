@@ -21,6 +21,7 @@ using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Serialization;
+using Infrastructure.DataSeeder;
 
 namespace WebAPI
 {
@@ -50,6 +51,7 @@ namespace WebAPI
             services.AddScoped<IVisitRepository, VisitRepository>();
             services.AddSingleton(AutoMapperConfig.Initialize());
             services.AddDbContext<VeterinaryOfficeContext>(options => options.UseSqlServer(Configuration.GetConnectionString("VeterinaryOfficeConnectionString")));
+            services.AddScoped<VeterinaryOfficeSeeder>();
             services.AddSwaggerGen(c =>
             {
                 c.EnableAnnotations();
@@ -64,7 +66,7 @@ namespace WebAPI
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, VeterinaryOfficeSeeder seeder)
         {
             if (env.IsDevelopment())
             {
@@ -83,6 +85,8 @@ namespace WebAPI
             {
                 endpoints.MapControllers();
             });
+
+            seeder.Seed();
         }
     }
 }

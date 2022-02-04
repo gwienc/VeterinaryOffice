@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(VeterinaryOfficeContext))]
-    [Migration("20220122090843_ChangeAnimal_MedicineToPrescription")]
-    partial class ChangeAnimal_MedicineToPrescription
+    [Migration("20220202154317_InitializeDatabase")]
+    partial class InitializeDatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
