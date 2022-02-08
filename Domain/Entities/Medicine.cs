@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Domain.Entities
 {
@@ -10,8 +6,6 @@ namespace Domain.Entities
     {
         public int Id { get; set; }
         public string Name { get; set; }
-
-        //virtual properties
         public virtual ICollection<Prescription> Prescriptions { get; set; }
     }
 }

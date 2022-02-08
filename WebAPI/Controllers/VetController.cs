@@ -1,13 +1,9 @@
 ﻿using Application.DTO.Vet;
 using Application.IServices;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace WebAPI.Controllers
 {
@@ -40,8 +36,7 @@ namespace WebAPI.Controllers
             {
                 return Ok(vet);
             }
-            return NotFound();
-            
+            return NotFound();          
         }
 
         [HttpPost]
@@ -70,8 +65,7 @@ namespace WebAPI.Controllers
                 _vetService.UpdateVet(id, vet);
                 return NoContent();
             }
-            return NotFound();
-            
+            return NotFound();           
         }
 
         [HttpPatch("{id}")]

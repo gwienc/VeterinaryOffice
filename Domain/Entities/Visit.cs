@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Domain.Entities
 {
@@ -16,8 +12,6 @@ namespace Domain.Entities
         public DateTime LastModifiedVisit { get; set; }
         public int AnimalId { get; set; }
         public int VetId { get; set; }
-
-        //virtual properties
         public virtual Animal Animal { get; set; }
         public virtual Vet Vet { get; set; }
 

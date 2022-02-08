@@ -1,13 +1,9 @@
 ﻿using Application.DTO.Animal;
 using Application.IServices;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace WebAPI.Controllers
 {
@@ -60,8 +56,7 @@ namespace WebAPI.Controllers
             {
 
                 return BadRequest(e.Message);
-            }
-            
+            }           
         }
 
         [HttpPut("{id}")]
@@ -86,8 +81,7 @@ namespace WebAPI.Controllers
             {
 
                 return BadRequest(e.Message);
-            }
-            
+            }          
         }
 
         [HttpPatch("{id}")]

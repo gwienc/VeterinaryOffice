@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Domain.Entities
 {
@@ -14,8 +10,6 @@ namespace Domain.Entities
         public string Street { get; set; }
         public string PostCode { get; set; }
         public string City { get; set; }
-
-        //virtual properties
         public virtual ICollection<Animal> Animals { get; set; }
     }
 }

@@ -1,10 +1,6 @@
 ﻿using Application.DTO.Animal;
 using Application.DTO.Vet;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.DTO.Visit
 {

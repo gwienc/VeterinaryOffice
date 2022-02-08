@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Domain.Entities
 {
@@ -16,8 +12,6 @@ namespace Domain.Entities
         public double Weight { get; set; }
         public string Gender { get; set; }
         public int OwnerId { get; set; }
-
-        //virtual properties
         public virtual ICollection<Visit> Visits { get; set; }
         public virtual ICollection<Prescription> Prescriptions { get; set; }
         public virtual Owner Owner { get; set; }
