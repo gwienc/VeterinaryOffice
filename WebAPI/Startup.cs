@@ -14,6 +14,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using System.Linq;
 
 namespace WebAPI
 {
@@ -58,27 +59,33 @@ namespace WebAPI
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, VeterinaryOfficeSeeder seeder)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, VeterinaryOfficeSeeder seeder, VeterinaryOfficeContext context)
         {
+            RunMigrations(context);
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebAPI v1"));
+                app.UseDeveloperExceptionPage();                
             }
-
+            app.UseSwagger();
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebAPI v1"));
             app.UseHttpsRedirection();
-
             app.UseRouting();
-
             app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
 
             seeder.Seed();
+        }
+
+        private void RunMigrations(VeterinaryOfficeContext context)
+        {
+            var pendingMigrations = context.Database.GetPendingMigrations();
+            if (pendingMigrations.Any())
+            {
+                context.Database.Migrate();
+            }
         }
     }
 }
